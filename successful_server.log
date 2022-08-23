@@ -1,0 +1,59 @@
+[20:15:16]    __________  ________________ 
+[20:15:16]   /  _/ ___/ |/ /  _/_  __/ __/ 
+[20:15:16]  _/ // (7 7    // /  / / / _/   
+[20:15:16] /___/\___/_/|_/___/ /_/ /x___/  
+[20:15:16] 
+[20:15:16] ver. 2.13.0#20220420-sha1:551f6ece
+[20:15:16] 2022 Copyright(C) Apache Software Foundation
+[20:15:16] 
+[20:15:16] Ignite documentation: https://ignite.apache.org
+[20:15:16] 
+[20:15:16] Quiet mode.
+[20:15:16]   ^-- Logging to file '/home/lalitsc/apache-ignite-2.13.0-bin/work/log/ignite-1aefd4cd.0.log'
+[20:15:16]   ^-- Logging by 'JavaLogger [quiet=true, config=null]'
+[20:15:16]   ^-- To see **FULL** console log here add -DIGNITE_QUIET=false or "-v" to ignite.{sh|bat}
+[20:15:16] 
+[20:15:16] OS: Linux 5.18.18-200.fc36.x86_64 amd64
+[20:15:16] VM information: OpenJDK Runtime Environment 1.8.0_345-b01 Red Hat, Inc. OpenJDK 64-Bit Server VM 25.345-b01
+[20:15:16] Please set system property '-Djava.net.preferIPv4Stack=true' to avoid possible problems in mixed environments.
+[20:15:16] Configured plugins:
+[20:15:16]   ^-- None
+[20:15:16] 
+[20:15:16] Configured failure handler: [hnd=StopNodeOrHaltFailureHandler [tryStop=false, timeout=0, super=AbstractFailureHandler [ignoredFailureTypes=UnmodifiableSet [SYSTEM_WORKER_BLOCKED, SYSTEM_CRITICAL_OPERATION_TIMEOUT]]]]
+[20:15:17] Initial heap size is 116MB (should be no less than 512MB, use -Xms512m -Xmx512m).
+[20:15:17] Message queue limit is set to 0 which may lead to potential OOMEs when running cache operations in FULL_ASYNC or PRIMARY_SYNC modes due to message queues growth on sender and receiver sides.
+[20:15:19] Data Regions Started: 4
+[20:15:19] 
+[20:15:19]     ^--   sysMemPlc region [type=internal, persistence=false, lazyAlloc=false,
+[20:15:19]       ...  initCfg=40MB, maxCfg=100MB, usedRam=0MB, freeRam=100%, allocRam=40MB]
+[20:15:19]     ^--   default region [type=default, persistence=false, lazyAlloc=true,
+[20:15:19]       ...  initCfg=256MB, maxCfg=1460MB, usedRam=0MB, freeRam=100%, allocRam=0MB]
+[20:15:19]     ^--   TxLog region [type=internal, persistence=false, lazyAlloc=false,
+[20:15:19]       ...  initCfg=40MB, maxCfg=100MB, usedRam=0MB, freeRam=100%, allocRam=40MB]
+[20:15:19]     ^--   volatileDsMemPlc region [type=user, persistence=false, lazyAlloc=true,
+[20:15:19]       ...  initCfg=40MB, maxCfg=100MB, usedRam=0MB, freeRam=100%, allocRam=0MB]
+[20:15:19] Security status [authentication=off, sandbox=off, tls/ssl=off]
+[20:15:19] Performance suggestions for grid  (fix if possible)
+[20:15:19] To disable, set -DIGNITE_PERFORMANCE_SUGGESTIONS_DISABLED=true
+[20:15:19]   ^-- Disable grid events (remove 'includeEventTypes' from configuration)
+[20:15:19]   ^-- Switch to the most recent 11 JVM version
+[20:15:19]   ^-- Enable G1 Garbage Collector (add '-XX:+UseG1GC' to JVM options)
+[20:15:19]   ^-- Specify JVM heap max size (add '-Xmx<size>[g|G|m|M|k|K]' to JVM options)
+[20:15:19]   ^-- Set max direct memory size if getting 'OOME: Direct buffer memory' (add '-XX:MaxDirectMemorySize=<size>[g|G|m|M|k|K]' to JVM options)
+[20:15:19]   ^-- Speed up flushing of dirty pages by OS (alter vm.dirty_expire_centisecs parameter by setting to 500)
+[20:15:19]   ^-- Reduce pages swapping ratio (set vm.swappiness=10 or less)
+[20:15:19] Refer to this page for more performance suggestions: https://ignite.apache.org/docs/latest/perf-and-troubleshooting/memory-tuning
+[20:15:19] 
+[20:15:19] To start Console Management & Monitoring run ignitevisorcmd.{sh|bat}
+[20:15:19] 
+[20:15:19] Ignite node started OK (id=1aefd4cd)
+[20:15:19] Topology snapshot [ver=1, locNode=1aefd4cd, servers=1, clients=0, state=ACTIVE, CPUs=6, offheap=1.4GB, heap=1.6GB]
+[20:15:19]   ^-- Baseline [id=0, size=1, online=1, offline=0]
+[20:15:25] Topology snapshot [ver=2, locNode=1aefd4cd, servers=1, clients=1, state=ACTIVE, CPUs=6, offheap=1.4GB, heap=3.2GB]
+[20:15:25]   ^-- Baseline [id=0, size=1, online=1, offline=0]
+>> Executing the compute task
+   Node ID: 1aefd4cd-30ca-4519-9eba-c1d2ccdaed19
+   OS: Linux   JRE: OpenJDK Runtime Environment
+>> Hello World!
+[20:15:26] Topology snapshot [ver=3, locNode=1aefd4cd, servers=1, clients=0, state=ACTIVE, CPUs=6, offheap=1.4GB, heap=1.6GB]
+[20:15:26]   ^-- Baseline [id=0, size=1, online=1, offline=0]
