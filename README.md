@@ -1,3 +1,15 @@
 # MapReduce
 
 MapReduce program using Apache Ignite that creates a frequency distribution of words by parsing PDF files. Repository is in flux.
+
+## Goals
+
+-[x] Find PDF files and extract text from them
+
+-[x] Connect to Apache Ignite
+
+-[] Insert extracted text in Apache Ignite instance
+
+-[] Apply MapReduce on inserted data
+
+-[] Prepare frequency distribution from MapReduce indexing results
