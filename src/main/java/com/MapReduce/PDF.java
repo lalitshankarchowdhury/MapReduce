@@ -12,11 +12,11 @@ import org.apache.pdfbox.text.PDFTextStripper;
 class PDF {
     /* Filter and create a list of PDF files in user supplied directory */
     static List<File> getPDFFiles(String dataPath) throws FileNotFoundException {
-        var dataDir = new File(dataPath);
-        var dirItems = dataDir.listFiles();
-        var pdfFiles = new ArrayList<File>();
+        File dataDir = new File(dataPath);
+        File[] dirItems = dataDir.listFiles();
+        ArrayList<File> pdfFiles = new ArrayList<File>();
         if (dirItems != null) {
-            for (var dirItem : dirItems) {
+            for (File dirItem : dirItems) {
                 if (dirItem.isFile() && dirItem.getName().toLowerCase().endsWith(".pdf")) {
                     pdfFiles.add(dirItem);
                 }
@@ -29,8 +29,8 @@ class PDF {
 
     /* Return parsed PDF text */
     static String getPDFText(File pdfFile) throws IOException {
-        var pdfDocument = PDDocument.load(pdfFile);
-        var pdfText = new PDFTextStripper().getText(pdfDocument);
+        PDDocument pdfDocument = PDDocument.load(pdfFile);
+        String pdfText = new PDFTextStripper().getText(pdfDocument);
         pdfDocument.close();
         return pdfText;
     }
