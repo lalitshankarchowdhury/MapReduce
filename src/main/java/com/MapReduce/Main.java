@@ -11,9 +11,9 @@ class Main {
         Scanner sc = new Scanner(System.in);
         String dataPath = sc.nextLine();
         List<File> pdfFiles = PDF.getPDFFiles(dataPath);
-        IgniteDB.initClientNode();
+        List<String> pdfTextList = PDF.getPDFText(pdfFiles);
         for (int i = 0; i < pdfFiles.size(); i++) {
-            IgniteDB.putText(i, PDF.getPDFText(pdfFiles.get(i)));
+            IgniteDB.putText(i, pdfTextList.get(i));
         }
         for (int i = 0; i < pdfFiles.size(); i++) {
             System.out.println(IgniteDB.getText(i));

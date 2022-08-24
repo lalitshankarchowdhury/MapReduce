@@ -15,12 +15,15 @@ class IgniteDB {
     static Ignite ignite;
     static IgniteCache<Integer, String> cache;
 
+    static {
+        cfg = new IgniteConfiguration();
+        ipFinder = new TcpDiscoveryMulticastIpFinder();
+    }
+
     /** Initialize client node **/
     static void initClientNode() {
-        cfg = new IgniteConfiguration();
         cfg.setClientMode(true);
         cfg.setPeerClassLoadingEnabled(true);
-        ipFinder = new TcpDiscoveryMulticastIpFinder();
         ipFinder.setAddresses(Collections.singletonList("127.0.0.1:47500..47509"));
         cfg.setDiscoverySpi(new TcpDiscoverySpi().setIpFinder(ipFinder));
         ignite = Ignition.start(cfg);
