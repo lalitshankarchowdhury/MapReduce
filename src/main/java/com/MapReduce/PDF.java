@@ -10,8 +10,6 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 class PDF {
-    static List<String> pdfTextList = new ArrayList<String>();
-
     /** Filter and create a list of PDF files in user supplied directory **/
     static List<File> getPDFFiles(String dataPath) throws FileNotFoundException {
         File dataDir = new File(dataPath);
@@ -31,6 +29,7 @@ class PDF {
 
     /** Return a list of parsed PDF text **/
     static List<String> getPDFText(List<File> pdfFiles) throws IOException {
+        List<String> pdfTextList = new ArrayList<String>();
         for (File pdfFile : pdfFiles) {
             PDDocument pdfDocument = PDDocument.load(pdfFile);
             pdfTextList.add(new PDFTextStripper().getText(pdfDocument));
