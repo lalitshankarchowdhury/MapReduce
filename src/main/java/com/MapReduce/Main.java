@@ -6,16 +6,18 @@ import java.util.List;
 import java.util.Scanner;
 
 class Main {
-    public static void main(String[] args) throws IOException {
+
+    public static void main(String[] args) throws IOException, InterruptedException {
         System.out.print("Enter PDF data path: ");
         Scanner sc = new Scanner(System.in);
         String dataPath = sc.nextLine();
-        List<File> pdfFiles = PDF.getPDFFiles(dataPath);
-        List<String> pdfTextList = PDF.getPDFText(pdfFiles);
-        for (int i = 0; i < pdfFiles.size(); i++) {
+        List<File> pdfFileList = ParallelPDF.getPDFFiles(dataPath);
+        IgniteDB.initClientNode();
+        List<String> pdfTextList = ParallelPDF.getPDFTexts(pdfFileList);
+        for (int i = 0; i < pdfFileList.size(); i++) {
             IgniteDB.putText(i, pdfTextList.get(i));
         }
-        for (int i = 0; i < pdfFiles.size(); i++) {
+        for (int i = 0; i < pdfFileList.size(); i++) {
             System.out.println(IgniteDB.getText(i));
         }
         IgniteDB.closeClientNode();

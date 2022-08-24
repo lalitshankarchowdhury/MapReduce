@@ -28,7 +28,7 @@ class PDF {
     }
 
     /** Return a list of parsed PDF text **/
-    static List<String> getPDFText(List<File> pdfFiles) throws IOException {
+    static List<String> getPDFTexts(List<File> pdfFiles) throws IOException {
         List<String> pdfTextList = new ArrayList<String>();
         for (File pdfFile : pdfFiles) {
             PDDocument pdfDocument = PDDocument.load(pdfFile);
