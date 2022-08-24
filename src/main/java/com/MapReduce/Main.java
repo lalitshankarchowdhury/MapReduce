@@ -2,8 +2,8 @@ package com.MapReduce;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 import java.util.List;
+import java.util.Scanner;
 
 class Main {
     public static void main(String[] args) throws IOException {
@@ -14,6 +14,9 @@ class Main {
         IgniteDB.initClientNode();
         for (int i = 0; i < pdfFiles.size(); i++) {
             IgniteDB.putText(i, PDF.getPDFText(pdfFiles.get(i)));
+        }
+        for (int i = 0; i < pdfFiles.size(); i++) {
+            System.out.println(IgniteDB.getText(i));
         }
         IgniteDB.closeClientNode();
         sc.close();

@@ -32,6 +32,11 @@ class IgniteDB {
         cache.put(key, text);
     }
 
+    /** Get text from key-value cache **/
+    static String getText(int key) {
+        return cache.get(key);
+    }
+
     /** Close client node **/
     static void closeClientNode() {
         ignite.close();
