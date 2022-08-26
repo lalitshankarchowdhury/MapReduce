@@ -11,15 +11,15 @@ class Main {
         Scanner sc = new Scanner(System.in);
         String dataPath = sc.nextLine();
         List<File> pdfFileList = ParallelPDF.getPDFFiles(dataPath);
-        IgniteDB.initClientNode();
+        IgniteClient.initClientNode();
         List<String> pdfTextList = ParallelPDF.getPDFTexts(pdfFileList);
         for (int i = 0; i < pdfFileList.size(); i++) {
-            IgniteDB.putText(i, pdfTextList.get(i));
+            IgniteClient.putText(i, pdfTextList.get(i));
         }
         for (int i = 0; i < pdfFileList.size(); i++) {
-            System.out.println(IgniteDB.getText(i));
+            System.out.println(IgniteClient.getText(i));
         }
-        IgniteDB.closeClientNode();
+        IgniteClient.closeClientNode();
         sc.close();
     }
 }

@@ -9,11 +9,11 @@ import org.apache.ignite.configuration.IgniteConfiguration;
 import org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi;
 import org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder;
 
-class IgniteDB {
-    static IgniteConfiguration cfg;
-    static TcpDiscoveryMulticastIpFinder ipFinder;
-    static Ignite ignite;
-    static IgniteCache<Integer, String> cache;
+class IgniteClient {
+    private static IgniteConfiguration cfg;
+    private static TcpDiscoveryMulticastIpFinder ipFinder;
+    private static Ignite ignite;
+    private static IgniteCache<Integer, String> cache;
 
     static {
         cfg = new IgniteConfiguration();

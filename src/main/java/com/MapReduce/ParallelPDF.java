@@ -42,9 +42,9 @@ class ParallelPDF {
     }
 
     private static class ParallelPDFRead extends Thread {
-        int low, high;
-        List<File> pdfFileList;
-        List<String> pdfTextList;
+        private int low, high;
+        private List<File> pdfFileList;
+        private List<String> pdfTextList;
 
         ParallelPDFRead(int low, int high, List<File> pdfFileList, List<String> pdfTextList) {
             this.low = low;
