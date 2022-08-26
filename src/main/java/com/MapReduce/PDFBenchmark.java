@@ -4,7 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-class Benchmark {
+class PDFBenchmark {
+    /** Benchmark single-threaded PDF read **/
     static void benchSingle(int n, List<File> pdfFileList) throws IOException {
         for (int i = 0; i < n; i++) {
             long startTime = System.currentTimeMillis();
@@ -13,6 +14,7 @@ class Benchmark {
         }
     }
 
+    /** Benchmark multi-threaded PDF read **/
     static void benchMulti(int n, List<File> pdfFileList) throws IOException, InterruptedException {
         for (int i = 0; i < n; i++) {
             long startTime = System.currentTimeMillis();

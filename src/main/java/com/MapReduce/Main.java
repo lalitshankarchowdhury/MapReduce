@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 
 class Main {
-
     public static void main(String[] args) throws IOException, InterruptedException {
         System.out.print("Enter PDF data path: ");
         Scanner sc = new Scanner(System.in);

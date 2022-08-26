@@ -53,6 +53,7 @@ class ParallelPDF {
             this.pdfTextList = pdfTextList;
         }
 
+        /** Thread to load and parse PDF files **/
         @Override
         public void run() {
             for (int i = low; i < high; i++) {
