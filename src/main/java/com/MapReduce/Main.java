@@ -11,6 +11,8 @@ class Main {
         System.out.print("Enter PDF data path: ");
         Scanner sc = new Scanner(System.in);
         String dataPath = sc.nextLine();
+        System.out.print("Enter Output CSV data path: ");
+        String outputPath = sc.nextLine();
         List<File> pdfFileList = PDF.getPDFFiles(dataPath);
         IgniteClient.init();
         System.out.println("Parsing PDF files...");
@@ -25,7 +27,7 @@ class Main {
         TreeMap<String, Integer> wordFrequencies = IgniteClient.compute();
         System.out.println("Time elapsed: " + (System.currentTimeMillis() - startTime) / 1000.0 + "s");
         System.out.println("Writing output...");
-        CSV.writeOutput("WordFrequencies.csv", wordFrequencies);
+        CSV.writeOutput(outputPath, wordFrequencies);
         IgniteClient.close();
         sc.close();
     }
