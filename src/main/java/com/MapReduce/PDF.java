@@ -34,13 +34,4 @@ class PDF {
         pdfDocument.close();
         return pdfText;
     }
-
-    /** Return a list of parsed PDF text **/
-    static List<String> getPDFTexts(List<File> pdfFiles) throws IOException {
-        List<String> pdfTextList = new ArrayList<String>();
-        for (File pdfFile : pdfFiles) {
-            pdfTextList.add(getPDFText(pdfFile));
-        }
-        return pdfTextList;
-    }
 }
