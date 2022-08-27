@@ -42,6 +42,7 @@ class IgniteClient {
 
     /** Close client node **/
     static void closeClientNode() {
+        cache.destroy();
         ignite.close();
     }
 }

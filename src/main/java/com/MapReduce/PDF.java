@@ -27,13 +27,19 @@ class PDF {
         return pdfFiles;
     }
 
+    /** Return parsed PDF text (single-threaded) **/
+    static String getPDFText(File pdfFile) throws IOException {
+        PDDocument pdfDocument = PDDocument.load(pdfFile);
+        String pdfText = new PDFTextStripper().getText(pdfDocument);
+        pdfDocument.close();
+        return pdfText;
+    }
+
     /** Return a list of parsed PDF text **/
     static List<String> getPDFTexts(List<File> pdfFiles) throws IOException {
         List<String> pdfTextList = new ArrayList<String>();
         for (File pdfFile : pdfFiles) {
-            PDDocument pdfDocument = PDDocument.load(pdfFile);
-            pdfTextList.add(new PDFTextStripper().getText(pdfDocument));
-            pdfDocument.close();
+            pdfTextList.add(getPDFText(pdfFile));
         }
         return pdfTextList;
     }

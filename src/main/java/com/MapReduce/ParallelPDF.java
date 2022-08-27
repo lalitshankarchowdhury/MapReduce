@@ -28,7 +28,15 @@ class ParallelPDF {
         return pdfFileList;
     }
 
-    /** Return a list of parsed PDF text **/
+    /** Return parsed PDF text **/
+    static String getPDFText(File pdfFile) throws IOException {
+        PDDocument pdfDocument = PDDocument.load(pdfFile);
+        String pdfText = new PDFTextStripper().getText(pdfDocument);
+        pdfDocument.close();
+        return pdfText;
+    }
+
+    /** Return a list of parsed PDF text (multi-threaded) **/
     static List<String> getPDFTexts(List<File> pdfFileList) throws IOException, InterruptedException {
         List<String> pdfTextList = new ArrayList<String>(Arrays.asList(new String[10]));
         ParallelPDFRead reader1 = new ParallelPDFRead(0, pdfFileList.size() / 2, pdfFileList, pdfTextList);
@@ -58,9 +66,7 @@ class ParallelPDF {
         public void run() {
             for (int i = low; i < high; i++) {
                 try {
-                    PDDocument pdfDocument = PDDocument.load(pdfFileList.get(i));
-                    pdfTextList.set(i, new PDFTextStripper().getText(pdfDocument));
-                    pdfDocument.close();
+                    pdfTextList.set(i, getPDFText(pdfFileList.get(i)));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
