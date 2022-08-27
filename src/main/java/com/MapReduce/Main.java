@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 class Main {
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -12,13 +13,19 @@ class Main {
         String dataPath = sc.nextLine();
         List<File> pdfFileList = PDF.getPDFFiles(dataPath);
         IgniteClient.init();
+        System.out.println("Parsing PDF files...");
         ParallelPDFRead thread1 = new ParallelPDFRead(0, pdfFileList.size() / 2, pdfFileList);
         ParallelPDFRead thread2 = new ParallelPDFRead(pdfFileList.size() / 2, pdfFileList.size(), pdfFileList);
         thread1.start();
         thread2.start();
         thread1.join();
         thread2.join();
-        System.out.println(IgniteClient.compute());
+        System.out.println("Counting word frequencies...");
+        long startTime = System.currentTimeMillis();
+        TreeMap<String, Integer> wordFrequencies = IgniteClient.compute();
+        System.out.println("Time elapsed: " + (System.currentTimeMillis() - startTime) / 1000.0 + "s");
+        System.out.println("Writing output...");
+        CSV.writeOutput("WordFrequencies.csv", wordFrequencies);
         IgniteClient.close();
         sc.close();
     }
