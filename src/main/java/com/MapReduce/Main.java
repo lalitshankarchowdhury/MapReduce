@@ -11,31 +11,29 @@ class Main {
         Scanner sc = new Scanner(System.in);
         String dataPath = sc.nextLine();
         List<File> pdfFileList = PDF.getPDFFiles(dataPath);
-        IgniteClient.initClientNode();
-        ParallelPDF reader1 = new ParallelPDF(0, pdfFileList.size() / 2, pdfFileList);
-        ParallelPDF reader2 = new ParallelPDF(pdfFileList.size() / 2, pdfFileList.size(), pdfFileList);
-        reader1.start();
-        reader2.start();
-        reader1.join();
-        reader2.join();
-        for (int i = 0; i < pdfFileList.size(); i++) {
-            System.out.println(IgniteClient.getText(i));
-        }
-        IgniteClient.closeClientNode();
+        IgniteClient.init();
+        ParallelPDFRead thread1 = new ParallelPDFRead(0, pdfFileList.size() / 2, pdfFileList);
+        ParallelPDFRead thread2 = new ParallelPDFRead(pdfFileList.size() / 2, pdfFileList.size(), pdfFileList);
+        thread1.start();
+        thread2.start();
+        thread1.join();
+        thread2.join();
+        System.out.println(IgniteClient.compute());
+        IgniteClient.close();
         sc.close();
     }
 
-    private static class ParallelPDF extends Thread {
+    private static class ParallelPDFRead extends Thread {
         private int low, high;
         private List<File> pdfFileList;
 
-        ParallelPDF(int low, int high, List<File> pdfFileList) {
+        ParallelPDFRead(int low, int high, List<File> pdfFileList) {
             this.low = low;
             this.high = high;
             this.pdfFileList = pdfFileList;
         }
 
-        /** Method to loaad, parse and upload PDF files to Apache Ignite Cache **/
+        /** Method to load, parse and upload PDF files to Apache Ignite Cache **/
         @Override
         public void run() {
             for (int i = low; i < high; i++) {
