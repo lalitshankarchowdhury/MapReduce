@@ -14,4 +14,4 @@ MapReduce program using Apache Ignite that creates a frequency distribution of w
 
 - [x] Apply MapReduce on inserted data
 
-- [ ] Prepare frequency distribution from MapReduce operation
+- [ ] Output word frequencies from MapReduce operation
