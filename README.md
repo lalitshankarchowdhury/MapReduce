@@ -12,6 +12,6 @@ MapReduce program using Apache Ignite that creates a frequency distribution of w
 
 - [x] Read and extract PDF files in multiple threads
 
-- [ ] Apply MapReduce on inserted data
+- [x] Apply MapReduce on inserted data
 
 - [ ] Prepare frequency distribution from MapReduce operation
