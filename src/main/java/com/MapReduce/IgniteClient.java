@@ -65,6 +65,7 @@ class IgniteClient {
     private static class WordFreqTask
             extends ComputeTaskSplitAdapter<IgniteCache<Integer, String>, TreeMap<String, Integer>> {
 
+        /** Implement split method, the `map` part of MapReduce **/
         @Override
         public List<ComputeJob> split(int gridSize, IgniteCache<Integer, String> documentCache) {
             int documentCount = documentCache.size();
@@ -86,6 +87,7 @@ class IgniteClient {
             return jobList;
         }
 
+        /** Implement reduce method **/
         @Override
         public TreeMap<String, Integer> reduce(List<ComputeJobResult> results) {
             TreeMap<String, Integer> combinedWordFreqs = new TreeMap<>();
